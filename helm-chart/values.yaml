@@ -1,0 +1,38 @@
+replicaCount: 1
+
+image:
+  repository: django-server
+  pullPolicy: Never
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 8000
+
+ingress:
+  enabled: false
+
+resources: {}
+
+env:
+  - name: DEBUG
+    value: "False"
+  - name: SECRET_KEY
+    value: "your_secret_key_here"
+  - name: ALLOWED_HOSTS
+    value: "*"
+
+postgresql:
+  enabled: true
+  global:
+    postgresql:
+      auth:
+        username: "user"
+        database: "db"
+        password: "password"
+
+kafka:
+  listeners:
+    client:
+      protocol: PLAINTEXT

@@ -1,0 +1,7 @@
+Django==3.2
+django-eventstream
+djangorestframework
+channels==3.0.5
+confluent_kafka
+psycopg2-binary
+uvicorn
